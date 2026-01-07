@@ -92,6 +92,10 @@ body {
   cursor: pointer;
 }
 
+.primary-button--muted {
+  opacity: 0.45;
+}
+
 .primary-button__icon {
   margin-left: 6px;
 }
@@ -256,6 +260,262 @@ body {
 
 .card__image--huge {
   background-image: linear-gradient(135deg, #ffb9e8, #d49bff);
+}
+
+.card__image--back-small {
+  background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80");
+}
+
+.card__image--back-athletic {
+  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80");
+}
+
+.card__image--back-medium {
+  background-image: url("https://images.unsplash.com/photo-1500048993959-d6bdf9ef7a21?auto=format&fit=crop&w=600&q=80");
+}
+
+.card__image--back-large {
+  background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80");
+}
+
+.card__image--legs-stockings {
+  background-image: url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=600&q=80");
+}
+
+.card__image--legs-socks {
+  background-image: url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80");
+}
+
+.card__image--legs-heels {
+  background-image: url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=700&q=80");
+}
+
+.card__image--legs-chubby {
+  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=700&q=80");
+}
+
+.personality-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.personality-card {
+  border: none;
+  border-radius: 18px;
+  padding: 18px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-align: center;
+  display: grid;
+  gap: 8px;
+  min-height: 150px;
+  cursor: pointer;
+}
+
+.personality-card__emoji {
+  font-size: 2rem;
+}
+
+.personality-card__title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.personality-card__text {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.chip {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 10px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.name-card {
+  display: grid;
+  gap: 16px;
+  justify-items: center;
+}
+
+.name-card__image {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: url("https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=500&q=80")
+      center/cover,
+    #2d175f;
+  border: 6px solid rgba(255, 255, 255, 0.2);
+}
+
+.name-card__input {
+  width: 100%;
+  max-width: 320px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 2px solid rgba(120, 181, 255, 0.8);
+  background: rgba(14, 6, 36, 0.8);
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.secondary-button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+.voice-list {
+  display: grid;
+  gap: 14px;
+}
+
+.voice-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  cursor: pointer;
+}
+
+.voice-card--active {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(210, 134, 255, 0.35);
+}
+
+.voice-card__play {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c76bff, #8d3bff);
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+}
+
+.voice-card__title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.voice-card__text {
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.voice-card__avatar {
+  width: 72px;
+  height: 40px;
+  border-radius: 12px;
+  background: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80")
+    center/cover;
+}
+
+.voice-card__avatar--blur {
+  filter: blur(2px);
+  opacity: 0.7;
+}
+
+.screen--full {
+  gap: 0;
+}
+
+.full-hero {
+  border-radius: 22px;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.full-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 11, 44, 0.1), rgba(22, 12, 56, 0.9));
+}
+
+.full-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 28px 18px 24px;
+  display: grid;
+  gap: 16px;
+  text-align: center;
+}
+
+.full-hero--nsfw {
+  background-image: url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80");
+}
+
+.full-hero--voice {
+  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80");
+}
+
+.choice-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.loading-list {
+  display: grid;
+  gap: 20px;
+}
+
+.loading-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 16px;
+  align-items: center;
+}
+
+.loading-item__bar {
+  grid-column: 1 / -1;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.loading-item__bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f6b5ff, #c592ff);
+}
+
+.loading-item__percent {
+  justify-self: end;
+  opacity: 0.8;
 }
 
 @media (min-width: 480px) {
