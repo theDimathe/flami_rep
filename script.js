@@ -2,6 +2,12 @@ const screens = Array.from(document.querySelectorAll(".screen"));
 const progressBars = document.querySelectorAll(".progress__bar");
 let currentScreen = 0;
 
+const updateStepParam = () => {
+  const url = new URL(window.location.href);
+  url.searchParams.set("step", String(currentScreen));
+  window.history.replaceState({}, "", url);
+};
+
 const updateProgress = () => {
   const screen = screens[currentScreen];
   const progress = screen.dataset.progress;
@@ -19,6 +25,7 @@ const showScreen = (index) => {
   currentScreen = Math.max(0, Math.min(index, screens.length - 1));
   screens[currentScreen].classList.add("screen--active");
   updateProgress();
+  updateStepParam();
 };
 
 document.body.addEventListener("click", (event) => {
@@ -41,4 +48,13 @@ document.body.addEventListener("click", (event) => {
   }
 });
 
+const initialStep = Number(new URLSearchParams(window.location.search).get("step"));
+
+if (!Number.isNaN(initialStep)) {
+  currentScreen = Math.max(0, Math.min(initialStep, screens.length - 1));
+  screens.forEach((screen) => screen.classList.remove("screen--active"));
+  screens[currentScreen].classList.add("screen--active");
+}
+
 updateProgress();
+updateStepParam();
