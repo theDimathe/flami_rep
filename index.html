@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Girlfriend Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="screen screen--active" data-screen="0">
+        <div class="hero">
+          <div class="hero__image">
+            <div class="hero__image-overlay"></div>
+          </div>
+          <div class="hero__content">
+            <p class="hero__eyebrow">Create Your Dream</p>
+            <h1 class="hero__title">AI Girlfriend</h1>
+            <button class="primary-button" data-next>
+              Start <span class="primary-button__icon">🔥</span>
+            </button>
+            <p class="hero__subtitle">AI Girlfriend Experience</p>
+            <div class="hero__links">
+              <a href="#">Refund Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Content Moderation Policy</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="1" data-progress="0.15">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What <span>ethnicity</span> will your girlfriend be?
+        </h2>
+        <div class="card-grid">
+          <button class="card" data-next>
+            <div class="card__image card__image--asian"></div>
+            <span class="card__label">Asian</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--latina"></div>
+            <span class="card__label">Latina</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--afro"></div>
+            <span class="card__label">Afro</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--white"></div>
+            <span class="card__label">White</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--anime"></div>
+            <span class="card__label">Anime</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--hentai"></div>
+            <span class="card__label">Hentai</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="2" data-progress="0.33">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What is your girlfriend <span>body</span> should look like?
+        </h2>
+        <div class="card-grid card-grid--two">
+          <button class="card" data-next>
+            <div class="card__image card__image--slim"></div>
+            <span class="card__label">Slim</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--athletic"></div>
+            <span class="card__label">Athletic</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--voluptuous"></div>
+            <span class="card__label">Voluptuous</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--curvy"></div>
+            <span class="card__label">Curvy</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="3" data-progress="0.5">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What is your girlfriend <span>breast size</span> ?
+        </h2>
+        <div class="card-grid card-grid--two">
+          <button class="card" data-next>
+            <div class="card__image card__image--small"></div>
+            <span class="card__label">Small</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--medium"></div>
+            <span class="card__label">Medium</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--large"></div>
+            <span class="card__label">Large</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--huge"></div>
+            <span class="card__label">Huge</span>
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
