@@ -22,8 +22,15 @@ const showScreen = (index) => {
 };
 
 document.body.addEventListener("click", (event) => {
+  const chip = event.target.closest(".chip");
+  const multiSelect = chip?.closest("[data-multi-select]");
   const nextButton = event.target.closest("[data-next]");
   const backButton = event.target.closest("[data-back]");
+
+  if (chip && multiSelect) {
+    chip.classList.toggle("is-selected");
+    return;
+  }
 
   if (nextButton) {
     showScreen(currentScreen + 1);

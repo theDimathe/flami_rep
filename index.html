@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
@@ -248,20 +248,22 @@
           </div>
         </header>
         <h2 class="screen__title">Your chat <span>topics</span></h2>
-        <div class="chip-grid">
-          <button class="chip" data-next>🔥 Dirty Talk</button>
-          <button class="chip" data-next>🍌 One-Night Stands</button>
-          <button class="chip" data-next>🍑 Wild Fantasies</button>
-          <button class="chip" data-next>🍒 Forbidden Desires</button>
-          <button class="chip" data-next>🖤 BDSM &amp; Kinks</button>
-          <button class="chip" data-next>👅 Oral Obsessions</button>
-          <button class="chip" data-next>🏳️‍🌈 LGBTQ+</button>
-          <button class="chip" data-next>💦 Pleasure &amp; Satisfaction</button>
-          <button class="chip" data-next>🌶️ Role Play</button>
-          <button class="chip" data-next>💖 Romantic Adventure</button>
-          <button class="chip" data-next>🎀 Rough vs. Gentle</button>
+        <div class="chip-grid" data-multi-select>
+          <button class="chip" type="button">🔥 Dirty Talk</button>
+          <button class="chip" type="button">🍌 One-Night Stands</button>
+          <button class="chip" type="button">🍑 Wild Fantasies</button>
+          <button class="chip" type="button">🍒 Forbidden Desires</button>
+          <button class="chip" type="button">🖤 BDSM &amp; Kinks</button>
+          <button class="chip" type="button">👅 Oral Obsessions</button>
+          <button class="chip" type="button">🏳️‍🌈 LGBTQ+</button>
+          <button class="chip" type="button">💦 Pleasure &amp; Satisfaction</button>
+          <button class="chip" type="button">🌶️ Role Play</button>
+          <button class="chip" type="button">💖 Romantic Adventure</button>
+          <button class="chip" type="button">🎀 Rough vs. Gentle</button>
         </div>
-        <button class="primary-button primary-button--muted" data-next>Continue</button>
+        <button class="primary-button primary-button--muted full-width" data-next>
+          Continue
+        </button>
       </section>
 
       <section class="screen" data-screen="8" data-progress="0.9">
@@ -274,12 +276,12 @@
         <h2 class="screen__title">What's her <span>name</span>?</h2>
         <div class="name-card">
           <div class="name-card__image"></div>
-          <input class="name-card__input" placeholder="Enter her name" />
-          <button class="secondary-button" data-next>
+          <input class="name-card__input full-width" placeholder="Enter her name" />
+          <button class="secondary-button full-width" data-next>
             🎲 Random name
           </button>
         </div>
-        <button class="primary-button" data-next>Next</button>
+        <button class="primary-button full-width" data-next>Next</button>
       </section>
 
       <section class="screen" data-screen="9" data-progress="0.95">
@@ -321,7 +323,7 @@
             <div class="voice-card__avatar voice-card__avatar--blur"></div>
           </button>
         </div>
-        <button class="primary-button" data-next>Continue</button>
+        <button class="primary-button full-width" data-next>Continue</button>
       </section>
 
       <section class="screen screen--full" data-screen="10" data-progress="1">
@@ -389,7 +391,7 @@
             <span class="loading-item__percent">91%</span>
           </div>
         </div>
-        <button class="primary-button primary-button--muted">Continue</button>
+        <button class="primary-button primary-button--muted full-width">Continue</button>
       </section>
     </main>
     <script src="script.js"></script>
