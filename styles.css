@@ -587,9 +587,34 @@ h3 {
 
 .loading-item {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 10px 16px;
   align-items: center;
+}
+
+.loading-item__status {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.loading-item.is-complete .loading-item__status {
+  opacity: 1;
+  transform: scale(1);
+  color: #120b2c;
+  background: linear-gradient(135deg, #f6b5ff, #c592ff);
+  border-color: transparent;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
 .loading-item__bar {
@@ -605,6 +630,7 @@ h3 {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #f6b5ff, #c592ff);
+  width: 0%;
 }
 
 .loading-item__percent {

@@ -5,8 +5,11 @@ const nameInput = document.querySelector("[data-name-input]");
 const nameContinueButton = document.querySelector("[data-name-continue]");
 const randomNameButton = document.querySelector("[data-random-name]");
 const voiceCards = Array.from(document.querySelectorAll("[data-voice-option]"));
+const loadingScreen = document.querySelector("[data-loading-screen]");
+const loadingItems = Array.from(document.querySelectorAll(".loading-item"));
 let currentScreen = 0;
 let activeAudio = null;
+let loadingAnimationFrame = null;
 
 const randomNames = [
   "Sofia",
@@ -99,12 +102,68 @@ const updateProgress = () => {
   });
 };
 
+const resetLoadingItems = () => {
+  loadingItems.forEach((item) => {
+    const bar = item.querySelector(".loading-item__bar span");
+    const percent = item.querySelector(".loading-item__percent");
+    item.classList.remove("is-complete");
+    if (bar) bar.style.width = "0%";
+    if (percent) percent.textContent = "0%";
+  });
+};
+
+const startLoadingAnimation = () => {
+  if (!loadingItems.length) return;
+  if (loadingAnimationFrame) {
+    cancelAnimationFrame(loadingAnimationFrame);
+  }
+
+  resetLoadingItems();
+
+  const configs = [
+    { duration: 4200, easing: (t) => 1 - Math.pow(1 - t, 3) },
+    { duration: 5600, easing: (t) => 1 - Math.pow(1 - t, 4) },
+    { duration: 6700, easing: (t) => (1 - Math.cos(Math.PI * t)) / 2 },
+  ];
+
+  const startTime = performance.now();
+  const maxDuration = Math.max(...configs.map((config) => config.duration));
+
+  const tick = (now) => {
+    const elapsed = now - startTime;
+    loadingItems.forEach((item, index) => {
+      const config = configs[index] || configs[configs.length - 1];
+      const bar = item.querySelector(".loading-item__bar span");
+      const percent = item.querySelector(".loading-item__percent");
+      const progress = Math.min(elapsed / config.duration, 1);
+      const eased = config.easing(progress);
+      const percentValue = Math.round(eased * 100);
+      if (bar) bar.style.width = `${percentValue}%`;
+      if (percent) percent.textContent = `${percentValue}%`;
+      if (progress >= 1) {
+        item.classList.add("is-complete");
+      }
+    });
+
+    if (elapsed < maxDuration) {
+      loadingAnimationFrame = requestAnimationFrame(tick);
+    } else {
+      loadingAnimationFrame = null;
+    }
+  };
+
+  loadingAnimationFrame = requestAnimationFrame(tick);
+};
+
 const showScreen = (index) => {
   screens[currentScreen].classList.remove("screen--active");
   currentScreen = Math.max(0, Math.min(index, screens.length - 1));
   screens[currentScreen].classList.add("screen--active");
   updateProgress();
   updateStepParam();
+  if (screens[currentScreen] === loadingScreen) {
+    startLoadingAnimation();
+  }
 };
 
 document.body.addEventListener("click", (event) => {
@@ -160,3 +219,6 @@ updateProgress();
 updateStepParam();
 updateTopicContinue();
 updateNameContinue();
+if (screens[currentScreen] === loadingScreen) {
+  startLoadingAnimation();
+}

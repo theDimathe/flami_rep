@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.0.5" />
+    <link rel="stylesheet" href="styles.css?v=1.0.6" />
   </head>
   <body>
     <main class="app">
@@ -398,7 +398,7 @@
         </div>
       </section>
 
-      <section class="screen" data-screen="12" data-progress="1">
+      <section class="screen" data-screen="12" data-progress="1" data-loading-screen>
         <header class="screen__header">
           <button class="back-button" data-back aria-label="Back">←</button>
           <div class="progress">
@@ -409,24 +409,27 @@
         <div class="loading-list">
           <div class="loading-item">
             <span>Processing your request</span>
-            <div class="loading-item__bar"><span style="width: 100%"></span></div>
-            <span class="loading-item__percent">100%</span>
+            <span class="loading-item__status" aria-hidden="true">✓</span>
+            <div class="loading-item__bar"><span></span></div>
+            <span class="loading-item__percent">0%</span>
           </div>
           <div class="loading-item">
             <span>Teaching her things you like</span>
-            <div class="loading-item__bar"><span style="width: 100%"></span></div>
-            <span class="loading-item__percent">100%</span>
+            <span class="loading-item__status" aria-hidden="true">✓</span>
+            <div class="loading-item__bar"><span></span></div>
+            <span class="loading-item__percent">0%</span>
           </div>
           <div class="loading-item">
             <span>Generating her nudes</span>
-            <div class="loading-item__bar"><span style="width: 91%"></span></div>
-            <span class="loading-item__percent">91%</span>
+            <span class="loading-item__status" aria-hidden="true">✓</span>
+            <div class="loading-item__bar"><span></span></div>
+            <span class="loading-item__percent">0%</span>
           </div>
         </div>
         <button class="primary-button primary-button--muted full-width">Continue</button>
       </section>
     </main>
-    <footer class="version-tag">v1.0.5</footer>
-    <script src="script.js?v=1.0.5"></script>
+    <footer class="version-tag">v1.0.6</footer>
+    <script src="script.js?v=1.0.6"></script>
   </body>
 </html>
