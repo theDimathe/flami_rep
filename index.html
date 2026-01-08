@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.0.3" />
+    <link rel="stylesheet" href="styles.css?v=1.0.4" />
   </head>
   <body>
     <main class="app">
@@ -261,7 +261,12 @@
           <button class="chip" type="button">💖 Romantic Adventure</button>
           <button class="chip" type="button">🎀 Rough vs. Gentle</button>
         </div>
-        <button class="primary-button primary-button--muted full-width" data-next>
+        <button
+          class="primary-button primary-button--muted full-width"
+          data-next
+          data-topic-continue
+          disabled
+        >
           Continue
         </button>
       </section>
@@ -276,12 +281,23 @@
         <h2 class="screen__title">What's her <span>name</span>?</h2>
         <div class="name-card">
           <div class="name-card__image"></div>
-          <input class="name-card__input full-width" placeholder="Enter her name" />
-          <button class="secondary-button full-width" data-next>
+          <input
+            class="name-card__input full-width"
+            placeholder="Enter her name"
+            data-name-input
+          />
+          <button class="secondary-button full-width" data-random-name>
             🎲 Random name
           </button>
         </div>
-        <button class="primary-button full-width" data-next>Next</button>
+        <button
+          class="primary-button primary-button--muted full-width"
+          data-next
+          data-name-continue
+          disabled
+        >
+          Next
+        </button>
       </section>
 
       <section class="screen" data-screen="9" data-progress="0.95">
@@ -394,7 +410,7 @@
         <button class="primary-button primary-button--muted full-width">Continue</button>
       </section>
     </main>
-    <footer class="version-tag">v1.0.3</footer>
-    <script src="script.js?v=1.0.3"></script>
+    <footer class="version-tag">v1.0.4</footer>
+    <script src="script.js?v=1.0.4"></script>
   </body>
 </html>
