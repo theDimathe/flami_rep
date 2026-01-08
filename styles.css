@@ -762,10 +762,10 @@ h3 {
 }
 
 .paywall__reaction-image {
-  height: 74px;
+  height: 174px;
   border-radius: 16px;
-  background: url("assets/Group%2012.png") center/cover;
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.4);
+  background: url("assets/Group%2012.png") center / cover;
+  scale: 67%;
 }
 
 .paywall__cta {
@@ -889,11 +889,10 @@ h3 {
 }
 
 .paywall__thumb {
-  height: 120px;
-  border-radius: 16px;
+  height: 270px;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+  scale: 50%;
 }
 
 .paywall__thumb--center {
