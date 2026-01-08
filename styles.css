@@ -268,93 +268,93 @@ h3 {
 }
 
 .card__image--asian {
-  background-image: url("card-ethnicity-asian.png");
+  background-image: url("assets/card-ethnicity-asian.png");
 }
 
 .card__image--latina {
-  background-image: url("card-ethnicity-latina.png");
+  background-image: url("assets/card-ethnicity-latina.png");
 }
 
 .card__image--afro {
-  background-image: url("card-ethnicity-afro.png");
+  background-image: url("assets/card-ethnicity-afro.png");
 }
 
 .card__image--white {
-  background-image: url("card-ethnicity-white.png");
+  background-image: url("assets/card-ethnicity-white.png");
 }
 
 .card__image--anime {
   background-image: linear-gradient(135deg, #ffb6f5, #8cc8ff),
-    url("card-ethnicity-anime.png");
+    url("assets/card-ethnicity-anime.png");
 }
 
 .card__image--hentai {
   background-image: linear-gradient(135deg, #ff9bd1, #b58cff),
-    url("card-ethnicity-hentai.png");
+    url("assets/card-ethnicity-hentai.png");
 }
 
 .card__image--slim {
-  background-image: url("card-body-slim.png");
+  background-image: url("assets/card-body-slim.png");
 }
 
 .card__image--athletic {
-  background-image: url("card-body-athletic.png");
+  background-image: url("assets/card-body-athletic.png");
 }
 
 .card__image--voluptuous {
-  background-image: url("card-body-voluptuous.png");
+  background-image: url("assets/card-body-voluptuous.png");
 }
 
 .card__image--curvy {
-  background-image: url("card-body-curvy.png");
+  background-image: url("assets/card-body-curvy.png");
 }
 
 .card__image--small {
-  background-image: url("card-breast-small.png");
+  background-image: url("assets/card-breast-small.png");
 }
 
 .card__image--medium {
-  background-image: url("card-breast-medium.png");
+  background-image: url("assets/card-breast-medium.png");
 }
 
 .card__image--large {
-  background-image: url("card-breast-large.png");
+  background-image: url("assets/card-breast-large.png");
 }
 
 .card__image--huge {
-  background-image: url("card-breast-huge.png");
+  background-image: url("assets/card-breast-huge.png");
 }
 
 .card__image--back-small {
-  background-image: url("card-back-small.png");
+  background-image: url("assets/card-back-small.png");
 }
 
 .card__image--back-athletic {
-  background-image: url("card-back-athletic.png");
+  background-image: url("assets/card-back-athletic.png");
 }
 
 .card__image--back-medium {
-  background-image: url("card-back-medium.png");
+  background-image: url("assets/card-back-medium.png");
 }
 
 .card__image--back-large {
-  background-image: url("card-back-large.png");
+  background-image: url("assets/card-back-large.png");
 }
 
 .card__image--legs-stockings {
-  background-image: url("card-legs-stockings.png");
+  background-image: url("assets/card-legs-stockings.png");
 }
 
 .card__image--legs-socks {
-  background-image: url("card-legs-socks.png");
+  background-image: url("assets/card-legs-socks.png");
 }
 
 .card__image--legs-heels {
-  background-image: url("card-legs-heels.png");
+  background-image: url("assets/card-legs-heels.png");
 }
 
 .card__image--legs-chubby {
-  background-image: url("card-legs-chubby.png");
+  background-image: url("assets/card-legs-chubby.png");
 }
 
 .personality-grid {
@@ -433,7 +433,7 @@ h3 {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: url("name-card.png")
+  background: url("assets/name-card.png")
       center/cover,
     #2d175f;
   border: 6px solid rgba(255, 255, 255, 0.2);
@@ -512,7 +512,7 @@ h3 {
   width: 72px;
   height: 40px;
   border-radius: 12px;
-  background: url("voice-avatar.png")
+  background: url("assets/voice-avatar.png")
     center/cover;
 }
 
@@ -573,11 +573,11 @@ h3 {
 }
 
 .full-hero--nsfw {
-  background-image: url("full-hero-nsfw.png");
+  background-image: url("assets/full-hero-nsfw.png");
 }
 
 .full-hero--voice {
-  background-image: url("full-hero-voice.png");
+  background-image: url("assets/full-hero-voice.png");
 }
 
 .choice-buttons {
@@ -764,7 +764,7 @@ h3 {
 .paywall__reaction-image {
   height: 74px;
   border-radius: 16px;
-  background: url("Group%2012.png") center/cover;
+  background: url("assets/Group%2012.png") center/cover;
   box-shadow: 0 12px 22px rgba(0, 0, 0, 0.4);
 }
 
@@ -897,7 +897,7 @@ h3 {
 }
 
 .paywall__thumb--center {
-  background-image: url("paywall-thumb-center.png");
+  background-image: url("assets/paywall-thumb-center.png");
 }
 
 .paywall__quote {
@@ -931,7 +931,7 @@ h3 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: url("paywall-avatar.png")
+  background: url("assets/paywall-avatar.png")
     center/cover;
   border: 2px solid rgba(255, 255, 255, 0.5);
 }
