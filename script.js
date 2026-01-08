@@ -7,6 +7,7 @@ const randomNameButton = document.querySelector("[data-random-name]");
 const voiceCards = Array.from(document.querySelectorAll("[data-voice-option]"));
 const loadingScreen = document.querySelector("[data-loading-screen]");
 const loadingItems = Array.from(document.querySelectorAll(".loading-item"));
+const resultModal = document.querySelector("[data-result-modal]");
 let currentScreen = 0;
 let activeAudio = null;
 let loadingAnimationFrame = null;
@@ -124,6 +125,9 @@ const startLoadingAnimation = () => {
   }
 
   resetLoadingItems();
+  if (resultModal) {
+    resultModal.classList.remove("is-visible");
+  }
 
   const configs = [
     { duration: 4200, easing: (t) => 1 - Math.pow(1 - t, 3) },
@@ -133,6 +137,7 @@ const startLoadingAnimation = () => {
 
   const startTime = performance.now();
   const maxDuration = Math.max(...configs.map((config) => config.duration));
+  let completedCount = 0;
 
   const tick = (now) => {
     const elapsed = now - startTime;
@@ -147,6 +152,10 @@ const startLoadingAnimation = () => {
       if (percent) percent.textContent = `${percentValue}%`;
       if (progress >= 1 && !item.classList.contains("is-complete")) {
         item.classList.add("is-complete");
+        completedCount += 1;
+        if (completedCount === loadingItems.length && resultModal) {
+          resultModal.classList.add("is-visible");
+        }
       }
     });
 
@@ -178,6 +187,7 @@ document.body.addEventListener("click", (event) => {
   const backButton = event.target.closest("[data-back]");
   const randomButton = event.target.closest("[data-random-name]");
   const voiceOption = event.target.closest("[data-voice-option]");
+  const modalNext = event.target.closest("[data-modal-next]");
 
   if (chip && multiSelect) {
     chip.classList.toggle("is-selected");
@@ -196,6 +206,14 @@ document.body.addEventListener("click", (event) => {
   if (voiceOption) {
     setActiveVoice(voiceOption);
     playVoiceSample(voiceOption);
+    return;
+  }
+
+  if (modalNext) {
+    if (resultModal) {
+      resultModal.classList.remove("is-visible");
+    }
+    showScreen(currentScreen + 1);
     return;
   }
 

@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.0.9" />
+    <link rel="stylesheet" href="styles.css?v=1.1.0" />
   </head>
   <body>
     <main class="app">
@@ -424,9 +424,36 @@
           </div>
         </div>
         <button class="primary-button primary-button--muted full-width">Continue</button>
+        <div class="result-modal" data-result-modal>
+          <div class="result-modal__card">
+            <h3>Do I need to worry about your wife or girlfriend?</h3>
+            <div class="result-modal__actions">
+              <button class="modal-button" data-modal-next>NO</button>
+              <button class="modal-button" data-modal-next>YES</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen screen--full" data-screen="13" data-progress="1">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <div class="full-hero full-hero--ready">
+          <div class="full-hero__content full-hero__content--bottom">
+            <p class="ready-eyebrow">Everything's ready!</p>
+            <h2 class="screen__title">
+              <span>Your girlfriend</span> is awaiting for you in the app
+            </h2>
+            <button class="primary-button full-width" data-next>Continue</button>
+          </div>
+        </div>
       </section>
     </main>
-    <footer class="version-tag">v1.0.9</footer>
-    <script src="script.js?v=1.0.9"></script>
+    <footer class="version-tag">v1.1.0</footer>
+    <script src="script.js?v=1.1.0"></script>
   </body>
 </html>
