@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.0.4" />
+    <link rel="stylesheet" href="styles.css?v=1.0.5" />
   </head>
   <body>
     <main class="app">
@@ -309,7 +309,11 @@
         </header>
         <h2 class="screen__title">What's her <span>voice</span>?</h2>
         <div class="voice-list">
-          <button class="voice-card voice-card--active" data-next>
+          <button
+            class="voice-card is-selected"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
             <div class="voice-card__play">▶</div>
             <div class="voice-card__info">
               <div class="voice-card__title">Natural</div>
@@ -317,21 +321,33 @@
             </div>
             <div class="voice-card__avatar"></div>
           </button>
-          <button class="voice-card" data-next>
+          <button
+            class="voice-card"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
             <div class="voice-card__play">▶</div>
             <div class="voice-card__info">
               <div class="voice-card__title">Sexy</div>
             </div>
             <div class="voice-card__avatar voice-card__avatar--blur"></div>
           </button>
-          <button class="voice-card" data-next>
+          <button
+            class="voice-card"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
             <div class="voice-card__play">▶</div>
             <div class="voice-card__info">
               <div class="voice-card__title">Genial</div>
             </div>
             <div class="voice-card__avatar voice-card__avatar--blur"></div>
           </button>
-          <button class="voice-card" data-next>
+          <button
+            class="voice-card"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
             <div class="voice-card__play">▶</div>
             <div class="voice-card__info">
               <div class="voice-card__title">ASMR</div>
@@ -410,7 +426,7 @@
         <button class="primary-button primary-button--muted full-width">Continue</button>
       </section>
     </main>
-    <footer class="version-tag">v1.0.4</footer>
-    <script src="script.js?v=1.0.4"></script>
+    <footer class="version-tag">v1.0.5</footer>
+    <script src="script.js?v=1.0.5"></script>
   </body>
 </html>

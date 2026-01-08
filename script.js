@@ -4,7 +4,9 @@ const topicContinueButton = document.querySelector("[data-topic-continue]");
 const nameInput = document.querySelector("[data-name-input]");
 const nameContinueButton = document.querySelector("[data-name-continue]");
 const randomNameButton = document.querySelector("[data-random-name]");
+const voiceCards = Array.from(document.querySelectorAll("[data-voice-option]"));
 let currentScreen = 0;
+let activeAudio = null;
 
 const randomNames = [
   "Sofia",
@@ -65,6 +67,26 @@ const updateNameContinue = () => {
   setButtonEnabled(nameContinueButton, hasName);
 };
 
+const setActiveVoice = (card) => {
+  if (!card) return;
+  voiceCards.forEach((item) => item.classList.remove("is-selected"));
+  card.classList.add("is-selected");
+};
+
+const playVoiceSample = (card) => {
+  const audioSource = card?.dataset.audio;
+  if (!audioSource) return;
+
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
+  }
+
+  const audio = new Audio(audioSource);
+  activeAudio = audio;
+  audio.play().catch(() => {});
+};
+
 const updateProgress = () => {
   const screen = screens[currentScreen];
   const progress = screen.dataset.progress;
@@ -91,6 +113,7 @@ document.body.addEventListener("click", (event) => {
   const nextButton = event.target.closest("[data-next]");
   const backButton = event.target.closest("[data-back]");
   const randomButton = event.target.closest("[data-random-name]");
+  const voiceOption = event.target.closest("[data-voice-option]");
 
   if (chip && multiSelect) {
     chip.classList.toggle("is-selected");
@@ -103,6 +126,12 @@ document.body.addEventListener("click", (event) => {
       randomNames[Math.floor(Math.random() * randomNames.length)];
     nameInput.value = randomName;
     nameInput.dispatchEvent(new Event("input", { bubbles: true }));
+    return;
+  }
+
+  if (voiceOption) {
+    setActiveVoice(voiceOption);
+    playVoiceSample(voiceOption);
     return;
   }
 
