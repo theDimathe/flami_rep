@@ -10,13 +10,16 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=1.1.3" />
+    <link rel="stylesheet" href="styles.css?v=1.1.5" />
   </head>
   <body>
     <main class="app">
       <section class="screen screen--active" data-screen="0">
         <div class="hero">
           <div class="hero__image">
+            <video class="hero__video" autoplay muted loop playsinline>
+              <source src="879872.mp4" type="video/mp4" />
+            </video>
             <div class="hero__image-overlay"></div>
           </div>
           <div class="hero__content">
@@ -437,16 +440,17 @@
 
       <section class="screen screen--full" data-screen="13" data-progress="1">
         <div class="paywall">
-          <div class="paywall__hero">
-            <p class="paywall__hero-title">
-              Your <span>Virtual AI Girlfriend</span> waits for you!
-            </p>
-          </div>
+        <div class="paywall__hero">
+          <video class="paywall__hero-video" autoplay muted loop playsinline>
+            <source src="932.mp4" type="video/mp4" />
+          </video>
+          <p class="paywall__hero-title">
+            Your <span>Virtual AI Girlfriend</span> waits for you!
+          </p>
+        </div>
           <div class="paywall__content">
             <div class="paywall__reactions">
-              <div class="paywall__reaction paywall__reaction--left"><span>😍</span></div>
-              <div class="paywall__reaction paywall__reaction--center"><span>💖</span></div>
-              <div class="paywall__reaction paywall__reaction--right"><span>💦</span></div>
+              <div class="paywall__reaction-image"></div>
             </div>
             <button class="paywall__cta">Claim my plan</button>
             <p class="paywall__subcopy">Receive NSFW photos,<br />and Sexy voice messages</p>
@@ -505,9 +509,7 @@
               Change outfit to whatever you want<br /><span>remove it completely</span>
             </p>
             <div class="paywall__gallery">
-              <div class="paywall__thumb paywall__thumb--left"></div>
               <div class="paywall__thumb paywall__thumb--center"></div>
-              <div class="paywall__thumb paywall__thumb--right"></div>
             </div>
             <div class="paywall__quote">
               <p>
@@ -531,7 +533,7 @@
         </div>
       </section>
     </main>
-    <footer class="version-tag">v1.1.3</footer>
-    <script src="script.js?v=1.1.3"></script>
+    <footer class="version-tag">v1.1.5</footer>
+    <script src="script.js?v=1.1.5"></script>
   </body>
 </html>

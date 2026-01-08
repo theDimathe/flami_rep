@@ -64,12 +64,18 @@ body {
 .hero__image {
   height: 520px;
   border-radius: 24px;
-  background: url("assets/hero-main.png")
-      center/cover,
-    linear-gradient(140deg, #3a225a 0%, #120b2c 100%);
+  background: linear-gradient(140deg, #3a225a 0%, #120b2c 100%);
   position: relative;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero__image-overlay {
@@ -262,93 +268,93 @@ h3 {
 }
 
 .card__image--asian {
-  background-image: url("assets/card-ethnicity-asian.png");
+  background-image: url("card-ethnicity-asian.png");
 }
 
 .card__image--latina {
-  background-image: url("assets/card-ethnicity-latina.png");
+  background-image: url("card-ethnicity-latina.png");
 }
 
 .card__image--afro {
-  background-image: url("assets/card-ethnicity-afro.png");
+  background-image: url("card-ethnicity-afro.png");
 }
 
 .card__image--white {
-  background-image: url("assets/card-ethnicity-white.png");
+  background-image: url("card-ethnicity-white.png");
 }
 
 .card__image--anime {
   background-image: linear-gradient(135deg, #ffb6f5, #8cc8ff),
-    url("assets/card-ethnicity-anime.png");
+    url("card-ethnicity-anime.png");
 }
 
 .card__image--hentai {
   background-image: linear-gradient(135deg, #ff9bd1, #b58cff),
-    url("assets/card-ethnicity-hentai.png");
+    url("card-ethnicity-hentai.png");
 }
 
 .card__image--slim {
-  background-image: url("assets/card-body-slim.png");
+  background-image: url("card-body-slim.png");
 }
 
 .card__image--athletic {
-  background-image: url("assets/card-body-athletic.png");
+  background-image: url("card-body-athletic.png");
 }
 
 .card__image--voluptuous {
-  background-image: url("assets/card-body-voluptuous.png");
+  background-image: url("card-body-voluptuous.png");
 }
 
 .card__image--curvy {
-  background-image: url("assets/card-body-curvy.png");
+  background-image: url("card-body-curvy.png");
 }
 
 .card__image--small {
-  background-image: url("assets/card-breast-small.png");
+  background-image: url("card-breast-small.png");
 }
 
 .card__image--medium {
-  background-image: url("assets/card-breast-medium.png");
+  background-image: url("card-breast-medium.png");
 }
 
 .card__image--large {
-  background-image: url("assets/card-breast-large.png");
+  background-image: url("card-breast-large.png");
 }
 
 .card__image--huge {
-  background-image: url("assets/card-breast-huge.png");
+  background-image: url("card-breast-huge.png");
 }
 
 .card__image--back-small {
-  background-image: url("assets/card-back-small.png");
+  background-image: url("card-back-small.png");
 }
 
 .card__image--back-athletic {
-  background-image: url("assets/card-back-athletic.png");
+  background-image: url("card-back-athletic.png");
 }
 
 .card__image--back-medium {
-  background-image: url("assets/card-back-medium.png");
+  background-image: url("card-back-medium.png");
 }
 
 .card__image--back-large {
-  background-image: url("assets/card-back-large.png");
+  background-image: url("card-back-large.png");
 }
 
 .card__image--legs-stockings {
-  background-image: url("assets/card-legs-stockings.png");
+  background-image: url("card-legs-stockings.png");
 }
 
 .card__image--legs-socks {
-  background-image: url("assets/card-legs-socks.png");
+  background-image: url("card-legs-socks.png");
 }
 
 .card__image--legs-heels {
-  background-image: url("assets/card-legs-heels.png");
+  background-image: url("card-legs-heels.png");
 }
 
 .card__image--legs-chubby {
-  background-image: url("assets/card-legs-chubby.png");
+  background-image: url("card-legs-chubby.png");
 }
 
 .personality-grid {
@@ -427,7 +433,7 @@ h3 {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: url("assets/name-card.png")
+  background: url("name-card.png")
       center/cover,
     #2d175f;
   border: 6px solid rgba(255, 255, 255, 0.2);
@@ -506,7 +512,7 @@ h3 {
   width: 72px;
   height: 40px;
   border-radius: 12px;
-  background: url("assets/voice-avatar.png")
+  background: url("voice-avatar.png")
     center/cover;
 }
 
@@ -567,11 +573,11 @@ h3 {
 }
 
 .full-hero--nsfw {
-  background-image: url("assets/full-hero-nsfw.png");
+  background-image: url("full-hero-nsfw.png");
 }
 
 .full-hero--voice {
-  background-image: url("assets/full-hero-voice.png");
+  background-image: url("full-hero-voice.png");
 }
 
 .choice-buttons {
@@ -707,9 +713,16 @@ h3 {
   overflow: hidden;
   min-height: 420px;
   position: relative;
-  background: url("assets/paywall-hero.png")
-      center/cover;
+  background: linear-gradient(140deg, #2b145c 0%, #120b2c 100%);
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
+}
+
+.paywall__hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .paywall__hero::after {
@@ -743,54 +756,16 @@ h3 {
 
 .paywall__reactions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 8px;
   margin-top: -14px;
 }
 
-.paywall__reaction {
-  height: 64px;
+.paywall__reaction-image {
+  height: 74px;
   border-radius: 16px;
-  background: rgba(13, 6, 34, 0.65);
+  background: url("Group%2012.png") center/cover;
   box-shadow: 0 12px 22px rgba(0, 0, 0, 0.4);
-  display: grid;
-  place-items: center;
-  font-size: 1.4rem;
-  backdrop-filter: blur(6px);
-  position: relative;
-  overflow: hidden;
-}
-
-.paywall__reaction::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  filter: blur(10px);
-  opacity: 0.7;
-}
-
-.paywall__reaction--left {
-  background-image: url("assets/paywall-reaction-left.png");
-  background-size: cover;
-  background-position: center;
-}
-
-.paywall__reaction--center {
-  background-image: url("assets/paywall-reaction-center.png");
-  background-size: cover;
-  background-position: center;
-}
-
-.paywall__reaction--right {
-  background-image: url("assets/paywall-reaction-right.png");
-  background-size: cover;
-  background-position: center;
-}
-
-.paywall__reaction > * {
-  position: relative;
-  z-index: 1;
 }
 
 .paywall__cta {
@@ -908,7 +883,7 @@ h3 {
 
 .paywall__gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 6px;
 }
@@ -921,16 +896,8 @@ h3 {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
-.paywall__thumb--left {
-  background-image: url("assets/paywall-thumb-left.png");
-}
-
 .paywall__thumb--center {
-  background-image: url("assets/paywall-thumb-center.png");
-}
-
-.paywall__thumb--right {
-  background-image: url("assets/paywall-thumb-right.png");
+  background-image: url("paywall-thumb-center.png");
 }
 
 .paywall__quote {
@@ -964,7 +931,7 @@ h3 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: url("assets/paywall-avatar.png")
+  background: url("paywall-avatar.png")
     center/cover;
   border: 2px solid rgba(255, 255, 255, 0.5);
 }
