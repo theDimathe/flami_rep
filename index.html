@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Girlfriend Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=1.1.0" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="screen screen--active" data-screen="0">
+        <div class="hero">
+          <div class="hero__image">
+            <div class="hero__image-overlay"></div>
+          </div>
+          <div class="hero__content">
+            <p class="hero__eyebrow">Create Your Dream</p>
+            <h1 class="hero__title">AI Girlfriend</h1>
+            <button class="primary-button" data-next>
+              Start <span class="primary-button__icon">🔥</span>
+            </button>
+            <p class="hero__subtitle">AI Girlfriend Experience</p>
+            <div class="hero__links">
+              <a href="#">Refund Policy</a>
+              <a href="#">Terms of Use</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Content Moderation Policy</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="1" data-progress="0.15">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What <span>ethnicity</span> will your girlfriend be?
+        </h2>
+        <div class="card-grid">
+          <button class="card" data-next>
+            <div class="card__image card__image--asian"></div>
+            <span class="card__label">Asian</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--latina"></div>
+            <span class="card__label">Latina</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--afro"></div>
+            <span class="card__label">Afro</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--white"></div>
+            <span class="card__label">White</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--anime"></div>
+            <span class="card__label">Anime</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--hentai"></div>
+            <span class="card__label">Hentai</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="2" data-progress="0.33">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What is your girlfriend <span>body</span> should look like?
+        </h2>
+        <div class="card-grid card-grid--two">
+          <button class="card" data-next>
+            <div class="card__image card__image--slim"></div>
+            <span class="card__label">Slim</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--athletic"></div>
+            <span class="card__label">Athletic</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--voluptuous"></div>
+            <span class="card__label">Voluptuous</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--curvy"></div>
+            <span class="card__label">Curvy</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="3" data-progress="0.5">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What is your girlfriend <span>breast size</span> ?
+        </h2>
+        <div class="card-grid card-grid--two">
+          <button class="card" data-next>
+            <div class="card__image card__image--small"></div>
+            <span class="card__label">Small</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--medium"></div>
+            <span class="card__label">Medium</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--large"></div>
+            <span class="card__label">Large</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--huge"></div>
+            <span class="card__label">Huge</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="4" data-progress="0.6">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          When she <span>turns back</span> to you what would you prefer to see?
+        </h2>
+        <div class="card-grid card-grid--two">
+          <button class="card" data-next>
+            <div class="card__image card__image--back-small"></div>
+            <span class="card__label">Small</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--back-athletic"></div>
+            <span class="card__label">Athletic</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--back-medium"></div>
+            <span class="card__label">Medium</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--back-large"></div>
+            <span class="card__label">Large</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="5" data-progress="0.7">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">
+          What kind of <span>legs</span> will your girlfriend have?
+        </h2>
+        <div class="card-grid card-grid--two">
+          <button class="card" data-next>
+            <div class="card__image card__image--legs-stockings"></div>
+            <span class="card__label">Stockings</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--legs-socks"></div>
+            <span class="card__label">Socks</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--legs-heels"></div>
+            <span class="card__label">Heels</span>
+          </button>
+          <button class="card" data-next>
+            <div class="card__image card__image--legs-chubby"></div>
+            <span class="card__label">Chubby</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="6" data-progress="0.78">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">Your girlfriend's <span>personality</span>?</h2>
+        <div class="personality-grid">
+          <button class="personality-card" data-next>
+            <div class="personality-card__emoji">😇</div>
+            <div class="personality-card__title">Innocent</div>
+            <div class="personality-card__text">Naive and sees world with wonder</div>
+          </button>
+          <button class="personality-card" data-next>
+            <div class="personality-card__emoji">🎲</div>
+            <div class="personality-card__title">Playful</div>
+            <div class="personality-card__text">
+              Turns every encounter into a naughty game
+            </div>
+          </button>
+          <button class="personality-card" data-next>
+            <div class="personality-card__emoji">🔥</div>
+            <div class="personality-card__title">Insatiable</div>
+            <div class="personality-card__text">
+              Voracious appetite for sensual indulgence
+            </div>
+          </button>
+          <button class="personality-card" data-next>
+            <div class="personality-card__emoji">💋</div>
+            <div class="personality-card__title">Flirtatious</div>
+            <div class="personality-card__text">Playfully engaging and charming</div>
+          </button>
+          <button class="personality-card" data-next>
+            <div class="personality-card__emoji">💖</div>
+            <div class="personality-card__title">Lover</div>
+            <div class="personality-card__text">Romantic and full of passion</div>
+          </button>
+          <button class="personality-card" data-next>
+            <div class="personality-card__emoji">🌷</div>
+            <div class="personality-card__title">Submissive</div>
+            <div class="personality-card__text">Obedient and always yielding</div>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="7" data-progress="0.84">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">Your chat <span>topics</span></h2>
+        <div class="chip-grid" data-multi-select>
+          <button class="chip" type="button">🔥 Dirty Talk</button>
+          <button class="chip" type="button">🍌 One-Night Stands</button>
+          <button class="chip" type="button">🍑 Wild Fantasies</button>
+          <button class="chip" type="button">🍒 Forbidden Desires</button>
+          <button class="chip" type="button">🖤 BDSM &amp; Kinks</button>
+          <button class="chip" type="button">👅 Oral Obsessions</button>
+          <button class="chip" type="button">🏳️‍🌈 LGBTQ+</button>
+          <button class="chip" type="button">💦 Pleasure &amp; Satisfaction</button>
+          <button class="chip" type="button">🌶️ Role Play</button>
+          <button class="chip" type="button">💖 Romantic Adventure</button>
+          <button class="chip" type="button">🎀 Rough vs. Gentle</button>
+        </div>
+        <button
+          class="primary-button primary-button--muted full-width"
+          data-next
+          data-topic-continue
+          disabled
+        >
+          Continue
+        </button>
+      </section>
+
+      <section class="screen" data-screen="8" data-progress="0.9">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">What's her <span>name</span>?</h2>
+        <div class="name-card">
+          <div class="name-card__image"></div>
+          <input
+            class="name-card__input full-width"
+            placeholder="Enter her name"
+            data-name-input
+          />
+          <button class="secondary-button full-width" data-random-name>
+            🎲 Random name
+          </button>
+        </div>
+        <button
+          class="primary-button primary-button--muted full-width"
+          data-next
+          data-name-continue
+          disabled
+        >
+          Next
+        </button>
+      </section>
+
+      <section class="screen" data-screen="9" data-progress="0.95">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">What's her <span>voice</span>?</h2>
+        <div class="voice-list">
+          <button
+            class="voice-card is-selected"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
+            <div class="voice-card__play">▶</div>
+            <div class="voice-card__info">
+              <div class="voice-card__title">Natural</div>
+              <div class="voice-card__text">Current Voice</div>
+            </div>
+            <div class="voice-card__avatar"></div>
+          </button>
+          <button
+            class="voice-card"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
+            <div class="voice-card__play">▶</div>
+            <div class="voice-card__info">
+              <div class="voice-card__title">Sexy</div>
+            </div>
+            <div class="voice-card__avatar voice-card__avatar--blur"></div>
+          </button>
+          <button
+            class="voice-card"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
+            <div class="voice-card__play">▶</div>
+            <div class="voice-card__info">
+              <div class="voice-card__title">Genial</div>
+            </div>
+            <div class="voice-card__avatar voice-card__avatar--blur"></div>
+          </button>
+          <button
+            class="voice-card"
+            data-voice-option
+            data-audio="https://www2.cs.uic.edu/~i101/SoundFiles/taunt.wav"
+          >
+            <div class="voice-card__play">▶</div>
+            <div class="voice-card__info">
+              <div class="voice-card__title">ASMR</div>
+            </div>
+            <div class="voice-card__avatar voice-card__avatar--blur"></div>
+          </button>
+        </div>
+        <button class="primary-button full-width" data-next>Continue</button>
+      </section>
+
+      <section class="screen screen--full" data-screen="10" data-progress="1">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <div class="full-hero full-hero--nsfw">
+          <div class="full-hero__content">
+            <h2 class="screen__title">
+              Do you want to recieve <span>NSFW</span> photos from her?
+            </h2>
+            <div class="choice-buttons">
+              <button class="secondary-button" data-next>NO</button>
+              <button class="secondary-button" data-next>YES</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen screen--full" data-screen="11" data-progress="1">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <div class="full-hero full-hero--voice">
+          <div class="full-hero__content">
+            <h2 class="screen__title">
+              Would you like to receive <span>voice messages</span>?
+            </h2>
+            <div class="choice-buttons">
+              <button class="secondary-button" data-next>No</button>
+              <button class="secondary-button" data-next>Yes</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="12" data-progress="1" data-loading-screen>
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <h2 class="screen__title">We're applying your <span>preferences</span></h2>
+        <div class="loading-list">
+          <div class="loading-item">
+            <span class="loading-item__label">Processing your request</span>
+            <span class="loading-item__percent">0%</span>
+            <div class="loading-item__bar"><span></span></div>
+          </div>
+          <div class="loading-item">
+            <span class="loading-item__label">Teaching her things you like</span>
+            <span class="loading-item__percent">0%</span>
+            <div class="loading-item__bar"><span></span></div>
+          </div>
+          <div class="loading-item">
+            <span class="loading-item__label">Generating her nudes</span>
+            <span class="loading-item__percent">0%</span>
+            <div class="loading-item__bar"><span></span></div>
+          </div>
+        </div>
+        <button class="primary-button primary-button--muted full-width">Continue</button>
+        <div class="result-modal" data-result-modal>
+          <div class="result-modal__card">
+            <h3>Do I need to worry about your wife or girlfriend?</h3>
+            <div class="result-modal__actions">
+              <button class="modal-button" data-modal-next>NO</button>
+              <button class="modal-button" data-modal-next>YES</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen screen--full" data-screen="13" data-progress="1">
+        <header class="screen__header">
+          <button class="back-button" data-back aria-label="Back">←</button>
+          <div class="progress">
+            <div class="progress__bar"></div>
+          </div>
+        </header>
+        <div class="full-hero full-hero--ready">
+          <div class="full-hero__content full-hero__content--bottom">
+            <p class="ready-eyebrow">Everything's ready!</p>
+            <h2 class="screen__title">
+              <span>Your girlfriend</span> is awaiting for you in the app
+            </h2>
+            <button class="primary-button full-width" data-next>Continue</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="version-tag">v1.1.0</footer>
+    <script src="script.js?v=1.1.0"></script>
+  </body>
+</html>
