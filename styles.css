@@ -64,7 +64,7 @@ body {
 .hero__image {
   height: 520px;
   border-radius: 24px;
-  background: url("https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=700&q=80")
+  background: url("assets/hero-main.png")
       center/cover,
     linear-gradient(140deg, #3a225a 0%, #120b2c 100%);
   position: relative;
@@ -262,93 +262,93 @@ h3 {
 }
 
 .card__image--asian {
-  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-ethnicity-asian.png");
 }
 
 .card__image--latina {
-  background-image: url("https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-ethnicity-latina.png");
 }
 
 .card__image--afro {
-  background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-ethnicity-afro.png");
 }
 
 .card__image--white {
-  background-image: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-ethnicity-white.png");
 }
 
 .card__image--anime {
   background-image: linear-gradient(135deg, #ffb6f5, #8cc8ff),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80");
+    url("assets/card-ethnicity-anime.png");
 }
 
 .card__image--hentai {
   background-image: linear-gradient(135deg, #ff9bd1, #b58cff),
-    url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80");
+    url("assets/card-ethnicity-hentai.png");
 }
 
 .card__image--slim {
-  background-image: linear-gradient(135deg, #ffe0d1, #e2b0ff);
+  background-image: url("assets/card-body-slim.png");
 }
 
 .card__image--athletic {
-  background-image: linear-gradient(135deg, #f6d6ff, #b3c7ff);
+  background-image: url("assets/card-body-athletic.png");
 }
 
 .card__image--voluptuous {
-  background-image: linear-gradient(135deg, #ffd6d6, #ffb1d7);
+  background-image: url("assets/card-body-voluptuous.png");
 }
 
 .card__image--curvy {
-  background-image: linear-gradient(135deg, #ffd1b8, #ff9cc6);
+  background-image: url("assets/card-body-curvy.png");
 }
 
 .card__image--small {
-  background-image: linear-gradient(135deg, #fdd4e7, #c9d7ff);
+  background-image: url("assets/card-breast-small.png");
 }
 
 .card__image--medium {
-  background-image: linear-gradient(135deg, #ffd6f8, #b7b8ff);
+  background-image: url("assets/card-breast-medium.png");
 }
 
 .card__image--large {
-  background-image: linear-gradient(135deg, #ffc6e1, #ff9bd1);
+  background-image: url("assets/card-breast-large.png");
 }
 
 .card__image--huge {
-  background-image: linear-gradient(135deg, #ffb9e8, #d49bff);
+  background-image: url("assets/card-breast-huge.png");
 }
 
 .card__image--back-small {
-  background-image: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-back-small.png");
 }
 
 .card__image--back-athletic {
-  background-image: url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-back-athletic.png");
 }
 
 .card__image--back-medium {
-  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-back-medium.png");
 }
 
 .card__image--back-large {
-  background-image: url("https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=600&q=80");
+  background-image: url("assets/card-back-large.png");
 }
 
 .card__image--legs-stockings {
-  background-image: url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80");
+  background-image: url("assets/card-legs-stockings.png");
 }
 
 .card__image--legs-socks {
-  background-image: url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=700&q=80");
+  background-image: url("assets/card-legs-socks.png");
 }
 
 .card__image--legs-heels {
-  background-image: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80");
+  background-image: url("assets/card-legs-heels.png");
 }
 
 .card__image--legs-chubby {
-  background-image: url("https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=700&q=80");
+  background-image: url("assets/card-legs-chubby.png");
 }
 
 .personality-grid {
@@ -427,7 +427,7 @@ h3 {
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: url("https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=500&q=80")
+  background: url("assets/name-card.png")
       center/cover,
     #2d175f;
   border: 6px solid rgba(255, 255, 255, 0.2);
@@ -506,7 +506,7 @@ h3 {
   width: 72px;
   height: 40px;
   border-radius: 12px;
-  background: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80")
+  background: url("assets/voice-avatar.png")
     center/cover;
 }
 
@@ -567,11 +567,11 @@ h3 {
 }
 
 .full-hero--nsfw {
-  background-image: url("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80");
+  background-image: url("assets/full-hero-nsfw.png");
 }
 
 .full-hero--voice {
-  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80");
+  background-image: url("assets/full-hero-voice.png");
 }
 
 .choice-buttons {
@@ -707,7 +707,7 @@ h3 {
   overflow: hidden;
   min-height: 420px;
   position: relative;
-  background: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80")
+  background: url("assets/paywall-hero.png")
       center/cover;
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.55);
 }
@@ -771,19 +771,19 @@ h3 {
 }
 
 .paywall__reaction--left {
-  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=240&q=80");
+  background-image: url("assets/paywall-reaction-left.png");
   background-size: cover;
   background-position: center;
 }
 
 .paywall__reaction--center {
-  background-image: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=240&q=80");
+  background-image: url("assets/paywall-reaction-center.png");
   background-size: cover;
   background-position: center;
 }
 
 .paywall__reaction--right {
-  background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=240&q=80");
+  background-image: url("assets/paywall-reaction-right.png");
   background-size: cover;
   background-position: center;
 }
@@ -922,15 +922,15 @@ h3 {
 }
 
 .paywall__thumb--left {
-  background-image: url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80");
+  background-image: url("assets/paywall-thumb-left.png");
 }
 
 .paywall__thumb--center {
-  background-image: url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80");
+  background-image: url("assets/paywall-thumb-center.png");
 }
 
 .paywall__thumb--right {
-  background-image: url("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80");
+  background-image: url("assets/paywall-thumb-right.png");
 }
 
 .paywall__quote {
@@ -964,7 +964,7 @@ h3 {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80")
+  background: url("assets/paywall-avatar.png")
     center/cover;
   border: 2px solid rgba(255, 255, 255, 0.5);
 }
