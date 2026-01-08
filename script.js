@@ -109,6 +109,11 @@ const resetLoadingItems = () => {
     item.classList.remove("is-complete");
     if (bar) bar.style.width = "0%";
     if (percent) percent.textContent = "0%";
+    if (bar) {
+      bar.style.animation = "none";
+      bar.offsetHeight;
+      bar.style.animation = "";
+    }
   });
 };
 
@@ -140,7 +145,7 @@ const startLoadingAnimation = () => {
       const percentValue = Math.round(eased * 100);
       if (bar) bar.style.width = `${percentValue}%`;
       if (percent) percent.textContent = `${percentValue}%`;
-      if (progress >= 1) {
+      if (progress >= 1 && !item.classList.contains("is-complete")) {
         item.classList.add("is-complete");
       }
     });
