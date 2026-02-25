@@ -284,13 +284,11 @@ h3 {
 }
 
 .card__image--anime {
-  background-image: linear-gradient(135deg, #ffb6f5, #8cc8ff),
-    url("assets/card-ethnicity-anime.png");
+  background-image: url("assets/card-ethnicity-anime.png");
 }
 
 .card__image--hentai {
-  background-image: linear-gradient(135deg, #ff9bd1, #b58cff),
-    url("assets/card-ethnicity-hentai.png");
+  background-image: url("assets/card-ethnicity-hentai.png");
 }
 
 .card__image--slim {
