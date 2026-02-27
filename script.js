@@ -188,6 +188,7 @@ document.body.addEventListener("click", (event) => {
   const randomButton = event.target.closest("[data-random-name]");
   const voiceOption = event.target.closest("[data-voice-option]");
   const modalNext = event.target.closest("[data-modal-next]");
+  const paypageLink = event.target.closest("[data-paypage-link]");
 
   if (chip && multiSelect) {
     chip.classList.toggle("is-selected");
@@ -206,6 +207,11 @@ document.body.addEventListener("click", (event) => {
   if (voiceOption) {
     setActiveVoice(voiceOption);
     playVoiceSample(voiceOption);
+    return;
+  }
+
+  if (paypageLink) {
+    window.location.href = "paypage.html";
     return;
   }
 
