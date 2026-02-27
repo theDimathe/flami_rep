@@ -500,9 +500,10 @@ h3 {
 }
 
 .voice-card__play.is-pause {
-  font-size: 0.95rem;
-  letter-spacing: -0.08em;
-  padding-left: 0;
+    font-size: 1.1rem;
+    letter-spacing: -0.08em;
+    padding-right: 3px;
+    padding-top: 1px;
 }
 
 .voice-card__title {
