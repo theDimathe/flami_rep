@@ -10,6 +10,7 @@ const loadingItems = Array.from(document.querySelectorAll(".loading-item"));
 const resultModal = document.querySelector("[data-result-modal]");
 let currentScreen = 0;
 let activeAudio = null;
+let activeVoiceCard = null;
 let loadingAnimationFrame = null;
 
 const randomNames = [
@@ -77,18 +78,52 @@ const setActiveVoice = (card) => {
   card.classList.add("is-selected");
 };
 
+const setVoicePlayIcon = (card, isPlaying) => {
+  const playIcon = card?.querySelector(".voice-card__play");
+  if (!playIcon) return;
+  playIcon.textContent = isPlaying ? "⏸" : "▶";
+};
+
+const resetVoicePlayback = () => {
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio.currentTime = 0;
+    activeAudio = null;
+  }
+
+  if (activeVoiceCard) {
+    setVoicePlayIcon(activeVoiceCard, false);
+    activeVoiceCard = null;
+  }
+};
+
 const playVoiceSample = (card) => {
   const audioSource = card?.dataset.audio;
   if (!audioSource) return;
 
-  if (activeAudio) {
-    activeAudio.pause();
-    activeAudio.currentTime = 0;
+  if (activeAudio && activeVoiceCard === card) {
+    resetVoicePlayback();
+    return;
   }
+
+  resetVoicePlayback();
 
   const audio = new Audio(audioSource);
   activeAudio = audio;
-  audio.play().catch(() => {});
+  activeVoiceCard = card;
+  setVoicePlayIcon(card, true);
+
+  audio.addEventListener("ended", () => {
+    if (activeAudio === audio) {
+      resetVoicePlayback();
+    }
+  });
+
+  audio.play().catch(() => {
+    if (activeAudio === audio) {
+      resetVoicePlayback();
+    }
+  });
 };
 
 const updateProgress = () => {
