@@ -491,9 +491,18 @@ h3 {
   height: 46px;
   border-radius: 50%;
   background: linear-gradient(135deg, #c76bff, #8d3bff);
-  display: grid;
-  place-items: center;
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  font-size: 1.08rem;
+  padding-left: 2px;
+}
+
+.voice-card__play.is-pause {
+  font-size: 0.95rem;
+  letter-spacing: -0.08em;
+  padding-left: 0;
 }
 
 .voice-card__title {

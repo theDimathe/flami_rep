@@ -81,7 +81,8 @@ const setActiveVoice = (card) => {
 const setVoicePlayIcon = (card, isPlaying) => {
   const playIcon = card?.querySelector(".voice-card__play");
   if (!playIcon) return;
-  playIcon.textContent = isPlaying ? "⏸" : "▶";
+  playIcon.textContent = isPlaying ? "Ⅱ" : "▶";
+  playIcon.classList.toggle("is-pause", isPlaying);
 };
 
 const resetVoicePlayback = () => {
