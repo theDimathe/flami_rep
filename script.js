@@ -8,6 +8,7 @@ const voiceCards = Array.from(document.querySelectorAll("[data-voice-option]"));
 const loadingScreen = document.querySelector("[data-loading-screen]");
 const loadingItems = Array.from(document.querySelectorAll(".loading-item"));
 const resultModal = document.querySelector("[data-result-modal]");
+const planCards = Array.from(document.querySelectorAll(".plan-card"));
 let currentScreen = 0;
 let activeAudio = null;
 let activeVoiceCard = null;
@@ -70,6 +71,22 @@ const updateNameContinue = () => {
   if (!nameInput || !nameContinueButton) return;
   const hasName = nameInput.value.trim().length > 0;
   setButtonEnabled(nameContinueButton, hasName);
+};
+
+const getSelectedPlanCard = () =>
+  planCards.find((card) => card.classList.contains("plan-card--active")) || null;
+
+const getSelectedPlanPrice = () => {
+  const selectedCard = getSelectedPlanCard();
+  const priceNode = selectedCard?.querySelector(".plan-card__price-new");
+  if (!priceNode) return null;
+  const parsed = Number.parseFloat(priceNode.textContent.replace(/[^\d.]/g, ""));
+  return Number.isFinite(parsed) ? parsed.toFixed(2) : null;
+};
+
+const setActivePlan = (card) => {
+  if (!card) return;
+  planCards.forEach((item) => item.classList.toggle("plan-card--active", item === card));
 };
 
 const setActiveVoice = (card) => {
@@ -225,6 +242,7 @@ document.body.addEventListener("click", (event) => {
   const voiceOption = event.target.closest("[data-voice-option]");
   const modalNext = event.target.closest("[data-modal-next]");
   const paypageLink = event.target.closest("[data-paypage-link]");
+  const planCard = event.target.closest(".plan-card");
 
   if (chip && multiSelect) {
     chip.classList.toggle("is-selected");
@@ -246,8 +264,21 @@ document.body.addEventListener("click", (event) => {
     return;
   }
 
+  if (planCard) {
+    setActivePlan(planCard);
+    return;
+  }
+
   if (paypageLink) {
-    window.location.href = "paypage.html";
+    const params = new URLSearchParams(window.location.search);
+    params.set("quizStep", String(currentScreen));
+
+    const selectedPrice = getSelectedPlanPrice();
+    if (selectedPrice) {
+      params.set("price", selectedPrice);
+    }
+
+    window.location.href = `paypage.html?${params.toString()}`;
     return;
   }
 
