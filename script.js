@@ -15,6 +15,11 @@ let activeAudio = null;
 let activeVoiceCard = null;
 let loadingAnimationFrame = null;
 const sentStepGoals = new Set();
+const pendingStepGoals = new Set();
+let ymFlushTimer = null;
+let ymFlushAttempts = 0;
+const YM_RETRY_INTERVAL_MS = 350;
+const YM_MAX_RETRY_ATTEMPTS = 30;
 
 const DEFAULT_FUNNEL_GOALS_BY_STEP = {
   0: "quiz_step_0",
@@ -58,17 +63,59 @@ const FUNNEL_GOALS_BY_STEP = Object.keys(DEFAULT_FUNNEL_GOALS_BY_STEP).reduce(
   {},
 );
 
-const sendStepGoal = (step) => {
-  if (typeof window.ym !== "function") return;
+const isYmReady = () => typeof window.ym === "function";
 
+const flushPendingStepGoals = () => {
+  if (!isYmReady()) return false;
+
+  pendingStepGoals.forEach((step) => {
+    const goalId = FUNNEL_GOALS_BY_STEP[String(step)] || getStepGoalFromQuery(step);
+    if (!goalId || sentStepGoals.has(String(step))) {
+      pendingStepGoals.delete(step);
+      return;
+    }
+
+    window.ym(metrikaCounterId, "reachGoal", goalId, {
+      quiz_step: String(step),
+    });
+
+    sentStepGoals.add(String(step));
+    pendingStepGoals.delete(step);
+  });
+
+  return true;
+};
+
+const schedulePendingStepGoalsFlush = () => {
+  if (ymFlushTimer) return;
+
+  ymFlushTimer = window.setInterval(() => {
+    ymFlushAttempts += 1;
+
+    if (flushPendingStepGoals() || ymFlushAttempts >= YM_MAX_RETRY_ATTEMPTS) {
+      window.clearInterval(ymFlushTimer);
+      ymFlushTimer = null;
+      ymFlushAttempts = 0;
+    }
+  }, YM_RETRY_INTERVAL_MS);
+};
+
+const sendStepGoal = (step) => {
   const goalId = FUNNEL_GOALS_BY_STEP[String(step)] || getStepGoalFromQuery(step);
   if (!goalId || sentStepGoals.has(String(step))) return;
+
+  if (!isYmReady()) {
+    pendingStepGoals.add(String(step));
+    schedulePendingStepGoalsFlush();
+    return;
+  }
 
   window.ym(metrikaCounterId, "reachGoal", goalId, {
     quiz_step: String(step),
   });
 
   sentStepGoals.add(String(step));
+  pendingStepGoals.delete(String(step));
 };
 
 const randomNames = [
@@ -377,6 +424,12 @@ updateTopicContinue();
 updateNameContinue();
 const initialScreenStep = screens[currentScreen]?.dataset.screen ?? String(currentScreen);
 sendStepGoal(initialScreenStep);
+window.addEventListener("load", flushPendingStepGoals);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    flushPendingStepGoals();
+  }
+});
 if (screens[currentScreen] === loadingScreen) {
   startLoadingAnimation();
 }
