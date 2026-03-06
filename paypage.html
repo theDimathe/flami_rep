@@ -68,14 +68,16 @@ src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/>
 
 <script>
 (function () {
+  const metrikaCounterId = 106180606;
   const params = new URLSearchParams(window.location.search);
-  const quizStep = params.get('quizStep');
+  const quizStep = params.get('quiz_step') || params.get('quizStep');
+  const paypageOpenGoal = params.get('goal_paypage_open') || 'quiz_paypage_open';
 
   if (!quizStep) return; // защита от прямых заходов
 
-  if (typeof window.ym === 'function') {
-    ym(106180606, 'reachGoal', 'quiz_paypage_open', {
-      quiz_step: quizStep
+  if (typeof window.ym === 'function' && paypageOpenGoal) {
+    ym(metrikaCounterId, 'reachGoal', paypageOpenGoal, {
+      quiz_step: String(quizStep)
     });
   }
 })();
@@ -822,7 +824,9 @@ const showSuccess = () => {
 
   if (!metrikaResultShownSent && typeof window.ym === "function") {
     metrikaResultShownSent = true;
-    ym(106180606, "reachGoal", "pay_result_modal_shown");
+    ym(106180606, "reachGoal", "pay_result_modal_shown", {
+      quiz_step: new URLSearchParams(window.location.search).get("quiz_step") || new URLSearchParams(window.location.search).get("quizStep") || ""
+    });
   }
 
 
