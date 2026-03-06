@@ -70,6 +70,8 @@ src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/>
 (function () {
   const metrikaCounterId = 106180606;
   const params = new URLSearchParams(window.location.search);
+  const metrikaCounterId = Number(params.get('ymid') || params.get('metrika_id') || params.get('counter_id') || 106180606);
+  const isYmDebugEnabled = params.get('ym_debug') === '1';
   const quizStep = params.get('quiz_step') || params.get('quizStep');
   const paypageOpenGoal = params.get('goal_paypage_open') || 'quiz_paypage_open';
   const retryIntervalMs = 350;
@@ -77,18 +79,31 @@ src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/>
 
   if (!quizStep || !paypageOpenGoal) return; // защита от прямых заходов
 
+  const logDebug = (message, payload) => {
+    if (!isYmDebugEnabled) return;
+    if (typeof payload === 'undefined') {
+      console.info(`[Metrika debug] ${message}`);
+      return;
+    }
+    console.info(`[Metrika debug] ${message}`, payload);
+  };
+
   const sendGoal = () => {
     if (typeof window.ym !== 'function') return false;
 
-    ym(metrikaCounterId, 'reachGoal', paypageOpenGoal, {
+    const payload = {
       quiz_step: String(quizStep)
-    });
+    };
+
+    logDebug(`paypage open goal=${paypageOpenGoal} counter=${metrikaCounterId}`, payload);
+    ym(metrikaCounterId, 'reachGoal', paypageOpenGoal, payload);
 
     return true;
   };
 
   if (sendGoal()) return;
 
+  logDebug('queue paypage open goal (ym not ready)');
   let attempts = 0;
   const timer = window.setInterval(() => {
     attempts += 1;
@@ -825,6 +840,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     let metrikaResultShownSent = false;
     const paymentParams = new URLSearchParams(window.location.search);
     const paymentQuizStep = paymentParams.get("quiz_step") || paymentParams.get("quizStep") || "";
+    const paymentMetrikaCounterId = Number(paymentParams.get("ymid") || paymentParams.get("metrika_id") || paymentParams.get("counter_id") || 106180606);
+    const isYmDebugEnabled = paymentParams.get("ym_debug") === "1";
 
     const sendMetrikaGoalWithRetry = (goalId, payload) => {
       const retryIntervalMs = 350;
@@ -832,11 +849,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       const sendGoal = () => {
         if (typeof window.ym !== "function") return false;
-        ym(106180606, "reachGoal", goalId, payload);
+        if (isYmDebugEnabled) {
+          console.info(`[Metrika debug] paypage result goal=${goalId} counter=${paymentMetrikaCounterId}`, payload);
+        }
+        ym(paymentMetrikaCounterId, "reachGoal", goalId, payload);
         return true;
       };
 
       if (sendGoal()) return;
+
+      if (isYmDebugEnabled) {
+        console.info(`[Metrika debug] queue paypage result goal=${goalId} (ym not ready)`);
+      }
 
       let attempts = 0;
       const timer = window.setInterval(() => {

@@ -9,7 +9,10 @@ const loadingScreen = document.querySelector("[data-loading-screen]");
 const loadingItems = Array.from(document.querySelectorAll(".loading-item"));
 const resultModal = document.querySelector("[data-result-modal]");
 const planCards = Array.from(document.querySelectorAll(".plan-card"));
-const metrikaCounterId = 106180606;
+const searchParams = new URLSearchParams(window.location.search);
+const metrikaCounterId = Number(searchParams.get("ymid") || searchParams.get("metrika_id") || searchParams.get("counter_id") || 106180606);
+const isYmDebugEnabled = searchParams.get("ym_debug") === "1";
+
 let currentScreen = 0;
 let activeAudio = null;
 let activeVoiceCard = null;
@@ -38,18 +41,20 @@ const DEFAULT_FUNNEL_GOALS_BY_STEP = {
   13: "quiz_step_13",
 };
 
-const searchParams = new URLSearchParams(window.location.search);
 
 const getStepGoalFromQuery = (step) => {
   const stepString = String(step);
   const stepNumber = Number.parseInt(stepString, 10);
 
-  const direct = searchParams.get(`goal_step_${stepString}`);
-  if (direct) return direct;
+  const keys = [`goal_step_${stepString}`, `goal_${stepString}`];
 
   if (Number.isFinite(stepNumber)) {
-    const oneBased = searchParams.get(`goal_step_${stepNumber + 1}`);
-    if (oneBased) return oneBased;
+    keys.push(`goal_step_${stepNumber + 1}`, `goal_${stepNumber + 1}`);
+  }
+
+  for (const key of keys) {
+    const value = searchParams.get(key);
+    if (value) return value;
   }
 
   return null;
@@ -63,7 +68,20 @@ const FUNNEL_GOALS_BY_STEP = Object.keys(DEFAULT_FUNNEL_GOALS_BY_STEP).reduce(
   {},
 );
 
+if (isYmDebugEnabled) {
+  console.info("[Metrika debug] funnel goal map", FUNNEL_GOALS_BY_STEP);
+}
+
 const isYmReady = () => typeof window.ym === "function";
+
+const logMetrikaDebug = (message, extra) => {
+  if (!isYmDebugEnabled) return;
+  if (typeof extra === "undefined") {
+    console.info(`[Metrika debug] ${message}`);
+    return;
+  }
+  console.info(`[Metrika debug] ${message}`, extra);
+};
 
 const flushPendingStepGoals = () => {
   if (!isYmReady()) return false;
@@ -75,6 +93,9 @@ const flushPendingStepGoals = () => {
       return;
     }
 
+    logMetrikaDebug(`reachGoal step=${step} goal=${goalId} counter=${metrikaCounterId}`, {
+      quiz_step: String(step),
+    });
     window.ym(metrikaCounterId, "reachGoal", goalId, {
       quiz_step: String(step),
     });
@@ -105,11 +126,15 @@ const sendStepGoal = (step) => {
   if (!goalId || sentStepGoals.has(String(step))) return;
 
   if (!isYmReady()) {
+    logMetrikaDebug(`queue step=${step} goal=${goalId} (ym not ready)`);
     pendingStepGoals.add(String(step));
     schedulePendingStepGoalsFlush();
     return;
   }
 
+  logMetrikaDebug(`reachGoal step=${step} goal=${goalId} counter=${metrikaCounterId}`, {
+    quiz_step: String(step),
+  });
   window.ym(metrikaCounterId, "reachGoal", goalId, {
     quiz_step: String(step),
   });
