@@ -9,10 +9,114 @@ const loadingScreen = document.querySelector("[data-loading-screen]");
 const loadingItems = Array.from(document.querySelectorAll(".loading-item"));
 const resultModal = document.querySelector("[data-result-modal]");
 const planCards = Array.from(document.querySelectorAll(".plan-card"));
+const metrikaCounterId = 106180606;
 let currentScreen = 0;
 let activeAudio = null;
 let activeVoiceCard = null;
 let loadingAnimationFrame = null;
+const sentStepGoals = new Set();
+const pendingStepGoals = new Set();
+let ymFlushTimer = null;
+let ymFlushAttempts = 0;
+const YM_RETRY_INTERVAL_MS = 350;
+const YM_MAX_RETRY_ATTEMPTS = 30;
+
+const DEFAULT_FUNNEL_GOALS_BY_STEP = {
+  0: "quiz_step_0",
+  1: "quiz_step_1",
+  2: "quiz_step_2",
+  3: "quiz_step_3",
+  4: "quiz_step_4",
+  5: "quiz_step_5",
+  6: "quiz_step_6",
+  7: "quiz_step_7",
+  8: "quiz_step_8",
+  9: "quiz_step_9",
+  10: "quiz_step_10",
+  11: "quiz_step_11",
+  12: "quiz_step_12",
+  13: "quiz_step_13",
+};
+
+const searchParams = new URLSearchParams(window.location.search);
+
+const getStepGoalFromQuery = (step) => {
+  const stepString = String(step);
+  const stepNumber = Number.parseInt(stepString, 10);
+
+  const direct = searchParams.get(`goal_step_${stepString}`);
+  if (direct) return direct;
+
+  if (Number.isFinite(stepNumber)) {
+    const oneBased = searchParams.get(`goal_step_${stepNumber + 1}`);
+    if (oneBased) return oneBased;
+  }
+
+  return null;
+};
+
+const FUNNEL_GOALS_BY_STEP = Object.keys(DEFAULT_FUNNEL_GOALS_BY_STEP).reduce(
+  (acc, step) => {
+    acc[step] = getStepGoalFromQuery(step) || DEFAULT_FUNNEL_GOALS_BY_STEP[step];
+    return acc;
+  },
+  {},
+);
+
+const isYmReady = () => typeof window.ym === "function";
+
+const flushPendingStepGoals = () => {
+  if (!isYmReady()) return false;
+
+  pendingStepGoals.forEach((step) => {
+    const goalId = FUNNEL_GOALS_BY_STEP[String(step)] || getStepGoalFromQuery(step);
+    if (!goalId || sentStepGoals.has(String(step))) {
+      pendingStepGoals.delete(step);
+      return;
+    }
+
+    window.ym(metrikaCounterId, "reachGoal", goalId, {
+      quiz_step: String(step),
+    });
+
+    sentStepGoals.add(String(step));
+    pendingStepGoals.delete(step);
+  });
+
+  return true;
+};
+
+const schedulePendingStepGoalsFlush = () => {
+  if (ymFlushTimer) return;
+
+  ymFlushTimer = window.setInterval(() => {
+    ymFlushAttempts += 1;
+
+    if (flushPendingStepGoals() || ymFlushAttempts >= YM_MAX_RETRY_ATTEMPTS) {
+      window.clearInterval(ymFlushTimer);
+      ymFlushTimer = null;
+      ymFlushAttempts = 0;
+    }
+  }, YM_RETRY_INTERVAL_MS);
+};
+
+const sendStepGoal = (step) => {
+  const goalId = FUNNEL_GOALS_BY_STEP[String(step)] || getStepGoalFromQuery(step);
+  if (!goalId || sentStepGoals.has(String(step))) return;
+
+  if (!isYmReady()) {
+    pendingStepGoals.add(String(step));
+    schedulePendingStepGoalsFlush();
+    return;
+  }
+
+  window.ym(metrikaCounterId, "reachGoal", goalId, {
+    quiz_step: String(step),
+  });
+
+  sentStepGoals.add(String(step));
+  pendingStepGoals.delete(String(step));
+};
 
 const randomNames = [
   "Sofia",
@@ -226,6 +330,8 @@ const showScreen = (index) => {
   screens[currentScreen].classList.remove("screen--active");
   currentScreen = Math.max(0, Math.min(index, screens.length - 1));
   screens[currentScreen].classList.add("screen--active");
+  const step = screens[currentScreen]?.dataset.screen ?? String(currentScreen);
+  sendStepGoal(step);
   updateProgress();
   updateStepParam();
   if (screens[currentScreen] === loadingScreen) {
@@ -270,8 +376,9 @@ document.body.addEventListener("click", (event) => {
   }
 
   if (paypageLink) {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(searchParams.toString());
     params.set("quizStep", String(currentScreen));
+    params.set("quiz_step", String(currentScreen));
 
     const selectedPrice = getSelectedPlanPrice();
     if (selectedPrice) {
@@ -299,7 +406,7 @@ document.body.addEventListener("click", (event) => {
   }
 });
 
-const initialStep = Number(new URLSearchParams(window.location.search).get("step"));
+const initialStep = Number(searchParams.get("step"));
 
 if (!Number.isNaN(initialStep)) {
   currentScreen = Math.max(0, Math.min(initialStep, screens.length - 1));
@@ -315,6 +422,14 @@ updateProgress();
 updateStepParam();
 updateTopicContinue();
 updateNameContinue();
+const initialScreenStep = screens[currentScreen]?.dataset.screen ?? String(currentScreen);
+sendStepGoal(initialScreenStep);
+window.addEventListener("load", flushPendingStepGoals);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    flushPendingStepGoals();
+  }
+});
 if (screens[currentScreen] === loadingScreen) {
   startLoadingAnimation();
 }

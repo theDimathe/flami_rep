@@ -68,16 +68,35 @@ src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/>
 
 <script>
 (function () {
+  const metrikaCounterId = 106180606;
   const params = new URLSearchParams(window.location.search);
-  const quizStep = params.get('quizStep');
+  const quizStep = params.get('quiz_step') || params.get('quizStep');
+  const paypageOpenGoal = params.get('goal_paypage_open') || 'quiz_paypage_open';
+  const retryIntervalMs = 350;
+  const maxRetryAttempts = 30;
 
-  if (!quizStep) return; // защита от прямых заходов
+  if (!quizStep || !paypageOpenGoal) return; // защита от прямых заходов
 
-  if (typeof window.ym === 'function') {
-    ym(106180606, 'reachGoal', 'quiz_paypage_open', {
-      quiz_step: quizStep
+  const sendGoal = () => {
+    if (typeof window.ym !== 'function') return false;
+
+    ym(metrikaCounterId, 'reachGoal', paypageOpenGoal, {
+      quiz_step: String(quizStep)
     });
-  }
+
+    return true;
+  };
+
+  if (sendGoal()) return;
+
+  let attempts = 0;
+  const timer = window.setInterval(() => {
+    attempts += 1;
+
+    if (sendGoal() || attempts >= maxRetryAttempts) {
+      window.clearInterval(timer);
+    }
+  }, retryIntervalMs);
 })();
 </script>
 
@@ -804,6 +823,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     let purchaseEventSent = false;
     let metrikaResultShownSent = false;
+    const paymentParams = new URLSearchParams(window.location.search);
+    const paymentQuizStep = paymentParams.get("quiz_step") || paymentParams.get("quizStep") || "";
+
+    const sendMetrikaGoalWithRetry = (goalId, payload) => {
+      const retryIntervalMs = 350;
+      const maxRetryAttempts = 30;
+
+      const sendGoal = () => {
+        if (typeof window.ym !== "function") return false;
+        ym(106180606, "reachGoal", goalId, payload);
+        return true;
+      };
+
+      if (sendGoal()) return;
+
+      let attempts = 0;
+      const timer = window.setInterval(() => {
+        attempts += 1;
+        if (sendGoal() || attempts >= maxRetryAttempts) {
+          window.clearInterval(timer);
+        }
+      }, retryIntervalMs);
+    };
 
 const showSuccess = () => {
   loadingState.classList.remove("active");
@@ -820,9 +862,11 @@ const showSuccess = () => {
     });
   }
 
-  if (!metrikaResultShownSent && typeof window.ym === "function") {
+  if (!metrikaResultShownSent) {
     metrikaResultShownSent = true;
-    ym(106180606, "reachGoal", "pay_result_modal_shown");
+    sendMetrikaGoalWithRetry("pay_result_modal_shown", {
+      quiz_step: paymentQuizStep,
+    });
   }
 
 
