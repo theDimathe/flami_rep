@@ -68,6 +68,7 @@ src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/>
 
 <script>
 (function () {
+  const metrikaCounterId = 106180606;
   const params = new URLSearchParams(window.location.search);
   const metrikaCounterId = Number(params.get('ymid') || params.get('metrika_id') || params.get('counter_id') || 106180606);
   const isYmDebugEnabled = params.get('ym_debug') === '1';
